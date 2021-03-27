@@ -10,12 +10,16 @@ import org.apexie.eliteclient.command.commands.AboutCommand;
 import org.apexie.eliteclient.database.SQLiteDataSource;
 
 import javax.security.auth.login.LoginException;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.sql.SQLException;
 import java.util.EnumSet;
 
 public class Bot {
 
     public static final String ELITECLIENT_VERSION = "Alpha 1.0";
+
+    private static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 
     private Bot() throws LoginException, SQLException {
         WebUtils.setUserAgent("Mozilla/5.0");

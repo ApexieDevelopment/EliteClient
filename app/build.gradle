@@ -4,7 +4,7 @@ plugins {
     id'com.github.johnrengelman.shadow' version '4.0.4'
 }
 
-mainClassName = 'com.apexie.eliteclient.Bot'
+mainClassName = 'org.apexie.eliteclient.Bot'
 
 version '1.0'
 
