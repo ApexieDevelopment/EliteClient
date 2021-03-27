@@ -1,0 +1,8 @@
+language: java
+deploy:
+  provider: releases
+  api_key: $GIT_OAUTH
+  file:
+    - "app/build/libs/app-1.0.jar"
+  skip_cleanup: true
+  draft: true
