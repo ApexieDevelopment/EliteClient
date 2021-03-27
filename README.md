@@ -4,7 +4,6 @@
 </p>
 
 <p align="center">
-    <a href="https://travis-ci.com/ApexieDevelopment/EliteClient"><img src="https://travis-ci.com/ApexieDevelopment/EliteClient.svg?branch=main" alt="Travis CI"></a>
 	<a href="https://github.com/ApexieDevelopment/EliteClient/releases"><img src="https://img.shields.io/github/v/tag/ApexieDevelopment/EliteClient?label=release&logo=github" alt="GitHub tag (latest release)" /></a>
 	<a href="https://discord.gg/a75eNEAtrt"><img src="https://img.shields.io/discord/736977303539810365?label=discord&color=7289DA&logo=discord" alt="Discord" /></a>
 </p>
