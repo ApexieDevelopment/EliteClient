@@ -49,11 +49,17 @@ public class NowPlayingCommand implements ICommand {
 
         EmbedBuilder builder = EmbedUtils.embedMessage("")
                 .setColor(ctx.getGuild().getSelfMember().getColor())
-                .setDescription("Now playing [**__" + audioPlayer.getPlayingTrack().getInfo().title +
-                        "__**](" + audioPlayer.getPlayingTrack().getInfo().uri + ") by **" +
-                        audioPlayer.getPlayingTrack().getInfo().author + "**")
                 .setThumbnail("https://img.youtube.com/vi/" + audioPlayer.getPlayingTrack().getInfo().identifier + "/maxresdefault.jpg")
                 .setFooter("Requested by " + ctx.getAuthor().getName(), ctx.getAuthor().getEffectiveAvatarUrl());
+        if(musicManager.scheduler.repeating) {
+            builder.setDescription("Now playing [**__" + audioPlayer.getPlayingTrack().getInfo().title +
+                    "__**](" + audioPlayer.getPlayingTrack().getInfo().uri + ") by **" +
+                    audioPlayer.getPlayingTrack().getInfo().author + "** (repeating)");
+        } else {
+            builder.setDescription("Now playing [**__" + audioPlayer.getPlayingTrack().getInfo().title +
+                    "__**](" + audioPlayer.getPlayingTrack().getInfo().uri + ") by **" +
+                    audioPlayer.getPlayingTrack().getInfo().author + "**");
+        }
         channel.sendMessage(builder.build()).queue();
     }
 

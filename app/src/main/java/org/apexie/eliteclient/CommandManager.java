@@ -27,6 +27,7 @@ public class CommandManager {
         addCommand(new PauseCommand());
         addCommand(new QueueCommand());
         addCommand(new AboutCommand());
+        addCommand(new ClearCommand());
         addCommand(new InviteCommand());
         addCommand(new RepeatCommand());
         addCommand(new MinecraftCommand());

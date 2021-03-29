@@ -17,7 +17,7 @@ import java.util.EnumSet;
 
 public class Bot {
 
-    public static final String ELITECLIENT_VERSION = "Alpha 1.0";
+    public static final String ELITECLIENT_VERSION = "Alpha 1.1";
 
     private static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 

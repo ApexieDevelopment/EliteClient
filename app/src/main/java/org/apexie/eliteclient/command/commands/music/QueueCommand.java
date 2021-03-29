@@ -23,11 +23,11 @@ public class QueueCommand implements ICommand {
         final BlockingQueue<AudioTrack> queue = musicManager.scheduler.queue;
 
         if (queue.isEmpty()) {
-            channel.sendMessage("The queue is currently empty.").queue();
+            new NowPlayingCommand().handle(ctx);
             return;
         }
 
-        final int trackCount = Math.min(queue.size(), 20);
+        final int trackCount = Math.min(queue.size(), 10);
         final List<AudioTrack> trackList = new ArrayList<>(queue);
         final StringBuilder queueList = new StringBuilder();
 
@@ -54,14 +54,14 @@ public class QueueCommand implements ICommand {
 
         String currentTrack = "`" + musicManager.audioPlayer.getPlayingTrack().getInfo().title + " by " + musicManager.audioPlayer.getPlayingTrack().getInfo().author + "` [`" + formatTime(musicManager.audioPlayer.getPlayingTrack().getDuration()) + "`]";
 
-        if (musicManager.scheduler.repeating == true) {
+        if (musicManager.scheduler.repeating) {
             currentTrack = currentTrack + " (repeating)";
         }
 
         EmbedBuilder builder = EmbedUtils.embedMessage("")
                 .setAuthor("Music Player")
                 .setColor(ctx.getGuild().getSelfMember().getColor())
-                .setDescription("This is the list of the queued tracks in this guild. If there are more than 20 tracks, they will show up only 20.")
+                .setDescription("This is the list of the queued tracks in this guild. If there are more than 10 tracks, they will show up only 10.")
                 .addField("Now Playing", currentTrack, false)
                 .addField("Current Queue", queueList.toString(), false)
                 .setFooter("Requested by " + ctx.getAuthor().getName(), ctx.getAuthor().getEffectiveAvatarUrl());
