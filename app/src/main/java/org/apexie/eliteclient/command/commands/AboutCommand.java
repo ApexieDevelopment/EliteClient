@@ -19,13 +19,17 @@ public class AboutCommand implements ICommand {
         links.append("**» Discord: ** https://discord.gg/a75eNEAtrt\n");
         links.append("**» Patreon: ** https://patreon.com/itzlightyhd\n");
         authors.append("**» ItzLightyHD: ** https://youtube.com/ItzLightyHD\n");
+        String description = "This bot runs on [**EliteClient**](https://github.com/ApexieDevelopment/EliteClient) version " +
+                Bot.ELITECLIENT_VERSION + " made by the Apexie Development " +
+                "Team";
+        if (Bot.IS_DEVELOPMENT_BUILD == true) description = "This bot runs on a development build of [**EliteClient**](https://github.com/ApexieDevelopment/EliteClient) version " +
+                Bot.ELITECLIENT_VERSION + " made by the Apexie Development " +
+                "Team";
         EmbedBuilder builder = EmbedUtils.embedMessage("")
                 .setAuthor(ctx.getSelfMember().getEffectiveName())
                 .setColor(ctx.getGuild().getSelfMember().getColor())
                 .setThumbnail(ctx.getSelfUser().getEffectiveAvatarUrl())
-                .setDescription("This bot runs on [**EliteClient**](https://github.com/ApexieDevelopment/EliteClient) version " +
-                        Bot.ELITECLIENT_VERSION + " made by the Apexie Development " +
-                        "Team")
+                .setDescription(description)
                 .addField("Links", links.toString(), false)
                 .addField("Contributors", authors.toString(), false)
                 .setFooter("Requested by " + ctx.getAuthor().getName(), ctx.getAuthor().getEffectiveAvatarUrl());

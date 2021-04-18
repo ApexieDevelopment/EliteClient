@@ -8,10 +8,7 @@ import org.apexie.eliteclient.command.CommandContext;
 import org.apexie.eliteclient.command.ICommand;
 import org.apexie.eliteclient.command.MissingPermissionMessage;
 import org.apexie.eliteclient.command.UsageMessage;
-import org.apexie.eliteclient.database.SQLiteDataSource;
-
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import org.apexie.eliteclient.database.DatabaseManager;
 import java.util.List;
 
 public class SetPrefixCommand implements ICommand {
@@ -49,19 +46,7 @@ public class SetPrefixCommand implements ICommand {
 
     private void updatePrefix(long guildId, String newPrefix) {
         MapsList.PREFIXES.put(guildId, newPrefix);
-
-        try (final PreparedStatement preparedStatement = SQLiteDataSource
-                .getConnection()
-                // language=SQLite
-                .prepareStatement("UPDATE guild_settings SET prefix = ? WHERE guild_id = ?")) {
-
-            preparedStatement.setString(1, newPrefix);
-            preparedStatement.setString(2, String.valueOf(guildId));
-
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        DatabaseManager.INSTANCE.setPrefix(guildId, newPrefix);
     }
 
     @Override

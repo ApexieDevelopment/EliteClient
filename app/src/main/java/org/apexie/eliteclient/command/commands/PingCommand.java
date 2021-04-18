@@ -1,7 +1,6 @@
 package org.apexie.eliteclient.command.commands;
 
 import net.dv8tion.jda.api.JDA;
-import org.apexie.eliteclient.Config;
 import org.apexie.eliteclient.command.CommandContext;
 import org.apexie.eliteclient.command.ICommand;
 

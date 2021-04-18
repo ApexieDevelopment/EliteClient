@@ -3,21 +3,20 @@ package org.apexie.eliteclient.database;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.apexie.eliteclient.Config;
+import org.apexie.eliteclient.MapsList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
-public class SQLiteDataSource {
-    private static final Logger LOGGER = LoggerFactory.getLogger(SQLiteDataSource.class);
-    private static final HikariConfig config = new HikariConfig();
-    private static final HikariDataSource ds;
+public class SQLiteDataSource implements DatabaseManager {
+    private final Logger LOGGER = LoggerFactory.getLogger(SQLiteDataSource.class);
+    private final HikariConfig config = new HikariConfig();
+    private final HikariDataSource ds;
 
-    static {
+    public SQLiteDataSource() {
         try {
             final File dbFile = new File("eliteclient.db");
             if (!dbFile.exists()) {
@@ -53,9 +52,49 @@ public class SQLiteDataSource {
         }
     }
 
-    private SQLiteDataSource() { }
-
-    public static Connection getConnection() throws SQLException {
+    private Connection getConnection() throws SQLException {
         return ds.getConnection();
+    }
+
+    @Override
+    public String getPrefix(long guildId) {
+        try (final PreparedStatement preparedStatement = getConnection()
+                // language=SQLite
+                .prepareStatement("SELECT prefix FROM guild_settings where guild_id = ?")) {
+            preparedStatement.setString(1, String.valueOf(guildId));
+
+            try (final ResultSet resultSet = preparedStatement.executeQuery()) {
+                if(resultSet.next()) {
+                    return resultSet.getString("prefix");
+                }
+            }
+
+            try (final PreparedStatement insertStatement = getConnection()
+                    // language=SQLite
+                    .prepareStatement("INSERT INTO guild_settings(guild_id) VALUES(?)")) {
+                insertStatement.setString(1, String.valueOf(guildId));
+
+                insertStatement.execute();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return Config.get("prefix");
+    }
+
+    @Override
+    public void setPrefix(long guildId, String newPrefix) {
+        try (final PreparedStatement preparedStatement = getConnection()
+                // language=SQLite
+                .prepareStatement("UPDATE guild_settings SET prefix = ? WHERE guild_id = ?")) {
+
+            preparedStatement.setString(1, newPrefix);
+            preparedStatement.setString(2, String.valueOf(guildId));
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
