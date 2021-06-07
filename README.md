@@ -10,6 +10,7 @@
 
 ## Getting Started
 - [Documentation](https://github.com/ApexieDevelopment/EliteClient/wiki)
+- [Deploy to Heroku](https://heroku.com/deploy?template=https://github.com/ApexieDevelopment/EliteClient)
 - [Installation instructions](https://github.com/ApexieDevelopment/EliteClient/wiki/Setup)
 
 ## Discussion/Help
