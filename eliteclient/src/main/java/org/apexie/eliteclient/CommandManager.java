@@ -31,7 +31,9 @@ public class CommandManager {
         addCommand(new InviteCommand());
         addCommand(new RepeatCommand());
         addCommand(new MinecraftCommand());
-        addCommand(new SetPrefixCommand());
+        if(!(Config.get("heroku").equals("yes"))) {
+            addCommand(new SetPrefixCommand());
+        }
         addCommand(new NowPlayingCommand());
         addCommand(new HelpCommand(this));
     }

@@ -80,6 +80,6 @@ public class NowPlayingCommand implements ICommand {
 
     @Override
     public List<String> getAliases() {
-        return List.of("playing", "currenttrack", "currentmusic", "playingnow");
+        return List.of("playing", "currenttrack", "currentmusic", "playingnow", "np");
     }
 }

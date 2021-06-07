@@ -28,6 +28,11 @@ public class Listener extends ListenerAdapter {
     public void onReady(@Nonnull ReadyEvent event) {
         Listener.username = event.getJDA().getSelfUser().getName();
         Listener.clientAvatar = event.getJDA().getSelfUser().getEffectiveAvatarUrl();
+        if(Config.get("heroku").equals("yes")) {
+            LOGGER.info("You're running the bot in Heroku mode: you won't be able");
+            LOGGER.info("to run commands such as 'setprefix' and other commands that");
+            LOGGER.info("use the database to save data.");
+        }
         LOGGER.info("{} is ready to go!", event.getJDA().getSelfUser().getAsTag());
         new Timer().scheduleAtFixedRate(new TimerTask() {
             @Override

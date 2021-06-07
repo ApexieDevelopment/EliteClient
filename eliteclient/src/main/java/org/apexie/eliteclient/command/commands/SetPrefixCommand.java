@@ -3,6 +3,7 @@ package org.apexie.eliteclient.command.commands;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.TextChannel;
+import org.apexie.eliteclient.Config;
 import org.apexie.eliteclient.MapsList;
 import org.apexie.eliteclient.command.CommandContext;
 import org.apexie.eliteclient.command.ICommand;
