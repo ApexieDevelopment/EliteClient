@@ -4,12 +4,6 @@
   "repository": "https://github.com/ApexieDevelopment/EliteClient",
   "logo": "https://raw.githubusercontent.com/ApexieDevelopment/EliteClient/main/Fox.png",
   "keywords": ["eliteclient", "java", "jda", "lavaplayer", "discord", "youtube"],
-  "image": "heroku/heroku-buildpack-java",
-  "buildpacks": [
-    {
-      "url": "heroku/heroku-buildpack-java"
-    }
-  ],
   "env": {
     "TOKEN": {
       "description": "The token of your Discord Bot",
