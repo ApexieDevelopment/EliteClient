@@ -1,1 +1,1 @@
-worker: java -jar eliteclient/build/libs/eliteclient-1.0-all.jar
+worker: java -jar build/libs/eliteclient-1.0-all.jar
