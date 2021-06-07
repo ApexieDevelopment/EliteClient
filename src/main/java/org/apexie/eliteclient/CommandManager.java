@@ -30,8 +30,10 @@ public class CommandManager {
         addCommand(new ClearCommand());
         addCommand(new InviteCommand());
         addCommand(new RepeatCommand());
+        addCommand(new YouTubeCommand());
         addCommand(new MinecraftCommand());
-        if(!(Config.get("heroku").equals("yes"))) {
+        if(Config.get("heroku").equals("yes")) {
+        } else {
             addCommand(new SetPrefixCommand());
         }
         addCommand(new NowPlayingCommand());
