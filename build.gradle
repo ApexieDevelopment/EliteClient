@@ -47,7 +47,7 @@ build.mustRunAfter test
 
 jar {
     manifest{
-        attributes 'Class-Path': '/libs/eliteclient-1.0-all.jar', 'Main-Class': 'org.apexie.eliteclient.Bot'
+        attributes 'Class-Path': '/libs/EliteClient-1.0-all.jar', 'Main-Class': 'org.apexie.eliteclient.Bot'
     }
 }
 
