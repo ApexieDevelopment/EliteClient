@@ -36,7 +36,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.7'
     implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
     implementation group: 'io.github.cdimascio', name: 'java-dotenv', version: '5.1.1'
-    implementation group: 'club.minnced', name: 'discord-webhooks', version: '0.1.8'
+    implementation group: 'club.minnced', name: 'discord-webhooks', version: '0.5.7'
     implementation group: 'com.zaxxer', name: 'HikariCP', version: '3.4.1'
     implementation group: 'org.xerial', name: 'sqlite-jdbc', version: '3.30.1'
 }
