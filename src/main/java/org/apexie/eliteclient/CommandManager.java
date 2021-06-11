@@ -28,9 +28,13 @@ public class CommandManager {
         addCommand(new QueueCommand());
         addCommand(new AboutCommand());
         addCommand(new ClearCommand());
+        addCommand(new PokerCommand());
+        addCommand(new ChessCommand());
         addCommand(new InviteCommand());
         addCommand(new RepeatCommand());
         addCommand(new YouTubeCommand());
+        addCommand(new FishingCommand());
+        addCommand(new BetrayalCommand());
         addCommand(new MinecraftCommand());
         if(Config.get("heroku").equals("yes")) {
         } else {
