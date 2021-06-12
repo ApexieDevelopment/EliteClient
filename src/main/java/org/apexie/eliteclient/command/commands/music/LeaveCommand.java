@@ -5,6 +5,7 @@ import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.entities.VoiceChannel;
 import net.dv8tion.jda.api.managers.AudioManager;
+import org.apexie.eliteclient.command.CommandCategory;
 import org.apexie.eliteclient.command.CommandContext;
 import org.apexie.eliteclient.command.ICommand;
 import org.apexie.eliteclient.lavaplayer.PlayerManager;
@@ -43,6 +44,11 @@ public class LeaveCommand implements ICommand {
     @Override
     public String getName() {
         return "leave";
+    }
+
+    @Override
+    public CommandCategory getCategory() {
+        return CommandCategory.MUSIC;
     }
 
     @Override

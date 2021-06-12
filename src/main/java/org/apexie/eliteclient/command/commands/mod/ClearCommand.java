@@ -1,7 +1,8 @@
-package org.apexie.eliteclient.command.commands;
+package org.apexie.eliteclient.command.commands.mod;
 
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.TextChannel;
+import org.apexie.eliteclient.command.CommandCategory;
 import org.apexie.eliteclient.command.CommandContext;
 import org.apexie.eliteclient.command.ICommand;
 import org.apexie.eliteclient.command.UsageMessage;
@@ -34,6 +35,11 @@ public class ClearCommand implements ICommand {
     @Override
     public String getName() {
         return "clear";
+    }
+
+    @Override
+    public CommandCategory getCategory() {
+        return CommandCategory.MOD;
     }
 
     @Override

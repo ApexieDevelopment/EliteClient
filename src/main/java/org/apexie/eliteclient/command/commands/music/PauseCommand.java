@@ -5,6 +5,7 @@ import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.GuildVoiceState;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.TextChannel;
+import org.apexie.eliteclient.command.CommandCategory;
 import org.apexie.eliteclient.command.CommandContext;
 import org.apexie.eliteclient.command.ICommand;
 import org.apexie.eliteclient.lavaplayer.PlayerManager;
@@ -56,6 +57,11 @@ public class PauseCommand implements ICommand {
     @Override
     public String getName() {
         return "pause";
+    }
+
+    @Override
+    public CommandCategory getCategory() {
+        return CommandCategory.MUSIC;
     }
 
     @Override

@@ -1,10 +1,11 @@
-package org.apexie.eliteclient.command.commands;
+package org.apexie.eliteclient.command.commands.fun;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import me.duncte123.botcommons.messaging.EmbedUtils;
 import me.duncte123.botcommons.web.WebUtils;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.TextChannel;
+import org.apexie.eliteclient.command.CommandCategory;
 import org.apexie.eliteclient.command.ICommand;
 import org.apexie.eliteclient.command.CommandContext;
 
@@ -33,6 +34,11 @@ public class MemeCommand implements ICommand {
     @Override
     public String getName() {
         return "meme";
+    }
+
+    @Override
+    public CommandCategory getCategory() {
+        return CommandCategory.FUN;
     }
 
     @Override

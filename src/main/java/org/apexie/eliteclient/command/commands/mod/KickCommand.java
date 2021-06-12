@@ -1,13 +1,10 @@
-package org.apexie.eliteclient.command.commands;
+package org.apexie.eliteclient.command.commands.mod;
 
-import org.apexie.eliteclient.command.CommandContext;
-import org.apexie.eliteclient.command.ICommand;
+import org.apexie.eliteclient.command.*;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.TextChannel;
-import org.apexie.eliteclient.command.MissingPermissionMessage;
-import org.apexie.eliteclient.command.UsageMessage;
 
 import java.util.List;
 
@@ -53,6 +50,11 @@ public class KickCommand implements ICommand {
     @Override
     public String getName() {
         return "kick";
+    }
+
+    @Override
+    public CommandCategory getCategory() {
+        return CommandCategory.MOD;
     }
 
     @Override

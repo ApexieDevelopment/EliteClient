@@ -1,4 +1,4 @@
-package org.apexie.eliteclient.command.commands;
+package org.apexie.eliteclient.command.commands.fun;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import me.duncte123.botcommons.messaging.EmbedUtils;
@@ -9,10 +9,13 @@ import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.entities.VoiceChannel;
 import org.apexie.eliteclient.Config;
+import org.apexie.eliteclient.command.CommandCategory;
 import org.apexie.eliteclient.command.CommandContext;
 import org.apexie.eliteclient.command.ICommand;
 
-public class BetrayalCommand implements ICommand {
+import java.util.List;
+
+public class YouTubeCommand implements ICommand {
     @Override
     public void handle(CommandContext ctx) {
         final TextChannel channel = ctx.getChannel();
@@ -28,7 +31,7 @@ public class BetrayalCommand implements ICommand {
         final VoiceChannel memberChannel = memberVoiceState.getChannel();
 
         WebUtils.ins.getJSONObject(
-                "https://discord-together-generator.glitch.me/app/betrayal/channel/" + memberChannel.getId() + "/token/" + Config.get("token")
+                "https://discord-together-generator.glitch.me/app/youtube/channel/" + memberChannel.getId() + "/token/" + Config.get("token")
         ).async((json) -> {
             if (!json.get("success").asBoolean()) {
                 if(json.get("error").asText() == "NO_ARGUMENTS") {
@@ -46,9 +49,9 @@ public class BetrayalCommand implements ICommand {
             final String invite = data.get("invite").asText();
 
             EmbedBuilder builder = EmbedUtils.embedMessage("")
-                    .setAuthor("Discord Together - Betrayal")
+                    .setAuthor("YouTube Together")
                     .setColor(ctx.getSelfMember().getColor())
-                    .setDescription("Have fun by playing Betrayal with your friends while talking in the voice chat. Click the link down below to start the game.")
+                    .setDescription("This feature allows you to watch YouTube along with other people in a voice chat. Click the link down below to start the fun.")
                     .addField("Invite link", invite, false);
             channel.sendMessage(builder.build()).queue();
         });
@@ -56,16 +59,26 @@ public class BetrayalCommand implements ICommand {
 
     @Override
     public String getName() {
-        return "betrayal";
+        return "youtube";
+    }
+
+    @Override
+    public CommandCategory getCategory() {
+        return CommandCategory.FUN;
     }
 
     @Override
     public String getHelp() {
-        return "Allows users to play Betrayal together in a Discord voice chat";
+        return "Allows users to watch YouTube Together in a Discord voice chat";
     }
 
     @Override
     public String getUsage() {
-        return "betrayal";
+        return "youtube";
+    }
+
+    @Override
+    public List<String> getAliases() {
+        return List.of("yt", "youtubetogether", "ytparty", "yttogether");
     }
 }

@@ -1,10 +1,11 @@
-package org.apexie.eliteclient.command.commands;
+package org.apexie.eliteclient.command.commands.fun;
 
 import com.github.natanbc.reliqua.util.StatusCodeValidator;
 import me.duncte123.botcommons.messaging.EmbedUtils;
 import me.duncte123.botcommons.web.WebUtils;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.TextChannel;
+import org.apexie.eliteclient.command.CommandCategory;
 import org.apexie.eliteclient.command.CommandContext;
 import org.apexie.eliteclient.command.ICommand;
 import org.apexie.eliteclient.command.UsageMessage;
@@ -51,6 +52,11 @@ public class MinecraftCommand implements ICommand {
     @Override
     public String getName() {
         return "minecraft";
+    }
+
+    @Override
+    public CommandCategory getCategory() {
+        return CommandCategory.FUN;
     }
 
     @Override

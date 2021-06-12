@@ -7,12 +7,16 @@ public interface ICommand {
 
     String getName();
 
+    default CommandCategory getCategory() {
+        return CommandCategory.GENERAL;
+    };
+
     String getHelp();
 
     String getUsage();
 
     default List<String> getAliases() {
-        return List.of(); // Arrays.asList if using Java 8
+        return List.of();
     }
 
 }

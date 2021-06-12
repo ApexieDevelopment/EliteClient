@@ -5,6 +5,7 @@ import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
 import me.duncte123.botcommons.messaging.EmbedUtils;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.TextChannel;
+import org.apexie.eliteclient.command.CommandCategory;
 import org.apexie.eliteclient.command.CommandContext;
 import org.apexie.eliteclient.command.ICommand;
 import org.apexie.eliteclient.lavaplayer.GuildMusicManager;
@@ -79,6 +80,11 @@ public class QueueCommand implements ICommand {
     @Override
     public String getName() {
         return "queue";
+    }
+
+    @Override
+    public CommandCategory getCategory() {
+        return CommandCategory.MUSIC;
     }
 
     @Override

@@ -6,10 +6,12 @@ import net.dv8tion.jda.api.entities.TextChannel;
 import org.apexie.eliteclient.CommandManager;
 import org.apexie.eliteclient.Config;
 import org.apexie.eliteclient.MapsList;
+import org.apexie.eliteclient.command.CommandCategory;
 import org.apexie.eliteclient.command.CommandContext;
 import org.apexie.eliteclient.command.ICommand;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class HelpCommand implements ICommand {
 
@@ -33,19 +35,32 @@ public class HelpCommand implements ICommand {
 
         if (args.isEmpty()) {
 
-            StringBuilder help_commands = new StringBuilder();
+            /* StringBuilder help_commands = new StringBuilder();
 
             manager.getCommands().stream().map(ICommand::getName).forEach(
                     (it) -> help_commands.append('`').append(prefix).append(it).append("` ")
-            );
+            ); */
 
             builder.setDescription("These are the available commands for " + ctx.getGuild().getName() + "\n" +
                                 "The bot prefix is: " + prefix + "\n" +
                                 "Command Parameters: '<>' is for strict & '[]' is optional");
 
-            builder.addField("Commands", help_commands.toString(), false);
+            // builder.addField("Commands", help_commands.toString(), false);
 
-            //builder.setDescription(help_commands.toString());
+            for (CommandCategory category : CommandCategory.values()) {
+                StringBuilder commands = new StringBuilder();
+
+                List<ICommand> categoryCommands = manager.getCommands().stream()
+                        .filter(cmd -> cmd.getCategory() == category)
+                        .collect(Collectors.toList());
+
+                categoryCommands.forEach(
+                        (it) ->
+                        commands.append('`').append(it.getName()).append("` ")
+                );
+
+                builder.addField(category.toString(), commands.toString(), false);
+            }
 
             channel.sendMessage(builder.build()).queue();
             return;

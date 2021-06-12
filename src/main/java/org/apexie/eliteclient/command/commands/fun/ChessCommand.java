@@ -1,4 +1,4 @@
-package org.apexie.eliteclient.command.commands;
+package org.apexie.eliteclient.command.commands.fun;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import me.duncte123.botcommons.messaging.EmbedUtils;
@@ -9,10 +9,11 @@ import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.entities.VoiceChannel;
 import org.apexie.eliteclient.Config;
+import org.apexie.eliteclient.command.CommandCategory;
 import org.apexie.eliteclient.command.CommandContext;
 import org.apexie.eliteclient.command.ICommand;
 
-public class PokerCommand implements ICommand {
+public class ChessCommand implements ICommand {
     @Override
     public void handle(CommandContext ctx) {
         final TextChannel channel = ctx.getChannel();
@@ -28,7 +29,7 @@ public class PokerCommand implements ICommand {
         final VoiceChannel memberChannel = memberVoiceState.getChannel();
 
         WebUtils.ins.getJSONObject(
-                "https://discord-together-generator.glitch.me/app/poker/channel/" + memberChannel.getId() + "/token/" + Config.get("token")
+                "https://discord-together-generator.glitch.me/app/chess/channel/" + memberChannel.getId() + "/token/" + Config.get("token")
         ).async((json) -> {
             if (!json.get("success").asBoolean()) {
                 if(json.get("error").asText() == "NO_ARGUMENTS") {
@@ -46,9 +47,9 @@ public class PokerCommand implements ICommand {
             final String invite = data.get("invite").asText();
 
             EmbedBuilder builder = EmbedUtils.embedMessage("")
-                    .setAuthor("Discord Together - Poker")
+                    .setAuthor("Discord Together - Chess")
                     .setColor(ctx.getSelfMember().getColor())
-                    .setDescription("Have fun by playing Poker with your friends while talking in the voice chat. Click the link down below to start the game.")
+                    .setDescription("Have fun by playing Chess with your friends while talking in the voice chat. Click the link down below to start the game.")
                     .addField("Invite link", invite, false);
             channel.sendMessage(builder.build()).queue();
         });
@@ -56,16 +57,21 @@ public class PokerCommand implements ICommand {
 
     @Override
     public String getName() {
-        return "poker";
+        return "chess";
+    }
+
+    @Override
+    public CommandCategory getCategory() {
+        return CommandCategory.FUN;
     }
 
     @Override
     public String getHelp() {
-        return "Allows users to play Poker together in a Discord voice chat";
+        return "Allows users to play Chess together in a Discord voice chat";
     }
 
     @Override
     public String getUsage() {
-        return "poker";
+        return "chess";
     }
 }

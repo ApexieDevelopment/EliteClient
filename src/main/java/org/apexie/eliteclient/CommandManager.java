@@ -4,6 +4,10 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import org.apexie.eliteclient.command.CommandContext;
 import org.apexie.eliteclient.command.ICommand;
 import org.apexie.eliteclient.command.commands.*;
+import org.apexie.eliteclient.command.commands.fun.*;
+import org.apexie.eliteclient.command.commands.mod.ClearCommand;
+import org.apexie.eliteclient.command.commands.InviteCommand;
+import org.apexie.eliteclient.command.commands.mod.KickCommand;
 import org.apexie.eliteclient.command.commands.music.*;
 
 import javax.annotation.Nullable;
