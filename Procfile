@@ -1,1 +1,1 @@
-worker: java -jar build/libs/EliteClient-1.0-all.jar
+worker: java -Xmx1G -Xms1G -XX:+UseG1GC -Dsun.rmi.dgc.server.gcInterval=2147483646 -XX:+UnlockExperimentalVMOptions -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -XX:MaxGCPauseMillis=25 -XX:G1HeapRegionSize=32M -jar build/libs/EliteClient-1.0-all.jar
